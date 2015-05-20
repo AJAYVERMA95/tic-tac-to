@@ -21,11 +21,13 @@ int main(){
 }
 int showingPosition_onGrid (){
 	int flag = 1,i,j;
-	for(i=1;i<=3;i++){
-		for(j=1;j<=3;j++){
-			printf(" %d |",flag);
+	for(i=0;i<3;i++){
+		for(j=0;j<3;j++){
+			printf(" %d ",flag);
 			flag++;
+			(j!=2) && printf("|");
 		}
+		(i!=2) && printf("\n-----------");
 		printf("\n");
 	}
 	return 1;
@@ -60,7 +62,7 @@ int ConvertPositionIntoGridFormat(int posPlayer,char ch[3][3]){
 		case 8 : posPlayer = 32 ;break;
 		case 9 : posPlayer = 33 ;break;
 		default : showingGridAfterIndividualInput(ch);
-		printf("INVALID POSITION.\n\n");
+		printf("INVALID POSITION.\n\n\n");
 		showingPosition_onGrid ();
 		printf("\nEnter correct position as above : \a");
 		posPlayer = 0;
@@ -90,9 +92,12 @@ int showingGridAfterIndividualInput(char ch[3][3]){
 	printf("\n\n");
 	for(i=0;i<3;i++){
 		for(j=0;j<3;j++){
-			printf(" %c |",ch[i][j] );
+			printf(" %c ",ch[i][j] );
+			(j!=2) && printf("|");
 		}
+		(i!=2) && printf("\n-----------");
 		printf("\n");
+		// printf("\b\n");
 	}
 	printf("\n\n");
 	return 1;
